@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-
+import { GeografiaModule } from './modules/geografia.module';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
@@ -28,7 +28,9 @@ import { AppController } from './app.controller';
       autoLoadEntities: true,
       synchronize: false,
     }),
-   }),
+  }),
+
+    GeografiaModule,
   ],
   controllers: [AppController],
   providers: [AppService],
