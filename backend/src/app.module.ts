@@ -2,10 +2,13 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config'
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigService } from '@nestjs/config';
-import { GeografiaModule } from './modules/geografia.module';
+import { GeografiaModule } from './modules/geografia/geografia.module';
+import { CategoriasModule } from './modules/categorias/categorias.module';
 
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
+import { ProdutosModule } from './modules/produtos/produtos.module';
+import { UsuariosModule } from './modules/UsuariosModule/usuarios.module';
 
 @Module({
   imports: [
@@ -31,6 +34,9 @@ import { AppController } from './app.controller';
   }),
 
     GeografiaModule,
+    CategoriasModule,
+    ProdutosModule,
+    UsuariosModule,
   ],
   controllers: [AppController],
   providers: [AppService],
