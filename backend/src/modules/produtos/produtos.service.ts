@@ -9,7 +9,7 @@ import { CreateProdutoDto } from './dto/create-produto.dto';
 
 import { ProdutosRepository } from './repositories/produtos.repository';
 import { CategoriasRepository } from '../categorias/repositories/categorias.repository';
-import { UsuariosRepository } from '../UsuariosModule/repositories/usuarios.repository';
+import { UsuariosRepository } from '../usuarios/repositories/usuarios.repository';
 
 @Injectable()
 export class ProdutosService {

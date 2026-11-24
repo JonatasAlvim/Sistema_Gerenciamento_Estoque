@@ -4,7 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Produtos } from '../../entities/produtos.entity';
 
 import { CategoriasModule } from '../categorias/categorias.module';
-import { UsuariosModule } from '../UsuariosModule/usuarios.module';
+import { UsuariosModule } from '../usuarios/usuarios.module';
 
 import { ProdutosRepository } from './repositories/produtos.repository';
 import { ProdutosService } from './produtos.service';

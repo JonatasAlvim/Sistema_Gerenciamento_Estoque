@@ -8,7 +8,7 @@ import { CategoriasModule } from './modules/categorias/categorias.module';
 import { AppService } from './app.service';
 import { AppController } from './app.controller';
 import { ProdutosModule } from './modules/produtos/produtos.module';
-import { UsuariosModule } from './modules/UsuariosModule/usuarios.module';
+import { UsuariosModule } from './modules/usuarios/usuarios.module';
 
 @Module({
   imports: [
