@@ -1,4 +1,3 @@
-
 import {
   Injectable,
   NotFoundException,
@@ -43,11 +42,13 @@ export class ProdutosService {
     return produto;
   }
 
-  async create(createProdutoDto: CreateProdutoDto) {
+  async create(
+    createProdutoDto: CreateProdutoDto,
+    idusuario: string,
+  ) {
     const {
       codigo_produto,
       idcategoria,
-      idusuario,
       ...dadosProduto
     } = createProdutoDto;
 
@@ -66,7 +67,7 @@ export class ProdutosService {
     }
 
     const usuario =
-      await this.usuariosRepository.findById(String(idusuario));
+      await this.usuariosRepository.findById(idusuario);
 
     if (!usuario) {
       throw new NotFoundException('Usuário não encontrado.');

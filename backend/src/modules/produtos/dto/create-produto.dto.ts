@@ -1,4 +1,3 @@
-
 import {
   IsString,
   IsNotEmpty,
@@ -26,13 +25,13 @@ export class CreateProdutoDto {
   @IsString()
   descricao?: string;
 
-@IsString()
-@IsNotEmpty()
-@IsIn(['UN', 'KG', 'L', 'CX', 'PCT', 'DZ', 'G', 'ML'], {
-  message: 'Unidade de medida inválida.',
-})
-@MaxLength(10)
-unidade_medida: string;
+  @IsString()
+  @IsNotEmpty()
+  @IsIn(['UN', 'KG', 'L', 'CX', 'PCT', 'DZ', 'G', 'ML'], {
+    message: 'Unidade de medida inválida.',
+  })
+  @MaxLength(10)
+  unidade_medida: string;
 
   @IsOptional()
   @IsNumber({ maxDecimalPlaces: 3 })
@@ -42,10 +41,6 @@ unidade_medida: string;
   @IsInt()
   @Min(1)
   idcategoria: number;
-
-  @IsInt()
-  @Min(1)
-  idusuario: number;
 
   @IsOptional()
   @IsBoolean()
