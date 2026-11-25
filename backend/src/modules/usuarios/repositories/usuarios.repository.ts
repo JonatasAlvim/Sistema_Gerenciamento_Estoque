@@ -17,9 +17,11 @@ export class UsuariosRepository {
   }
 
   findByEmail(email: string): Promise<Usuarios | null> {
-    return this.repository.findOne({
-      where: { email },
-    });
+  return this.repository
+    .createQueryBuilder('usuario')
+    .addSelect('usuario.senha_hash')
+    .where('usuario.email = :email', { email })
+    .getOne();
   }
 
   findByCpf(cpf: string): Promise<Usuarios | null> {
