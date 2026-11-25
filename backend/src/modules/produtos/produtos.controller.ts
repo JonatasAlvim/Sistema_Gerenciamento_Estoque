@@ -8,6 +8,7 @@ import {
   Param,
   Patch,
   Delete,
+  Query,
 } from '@nestjs/common';
 
 import { Request } from 'express';
@@ -18,6 +19,7 @@ import { JwtAuthGuard } from '../AuthModule/guards/jwt-auth.guard';
 
 import { UpdateProdutoDto } from './dto/update-produto.dto';
 
+import { FindProdutosQueryDto } from './dto/find-produtos-query.dto';
 interface AuthenticatedRequest extends Request {
   user: {
     idusuario: string;
@@ -31,10 +33,10 @@ export class ProdutosController {
   ) {}
 
   @Get()
-  findAll() {
-    return this.produtosService.findAll();
+  findAll(@Query() filtros: FindProdutosQueryDto) {
+  return this.produtosService.findAll(filtros);
   }
-
+  
   @Get('codigo/:codigo')
   findByCode(@Param('codigo') codigo: string) {
     return this.produtosService.findByCode(codigo);

@@ -2,6 +2,7 @@ import {
   Injectable,
   NotFoundException,
   ConflictException,
+  BadRequestException
 } from '@nestjs/common';
 
 import { CreateProdutoDto } from './dto/create-produto.dto';
@@ -11,6 +12,7 @@ import { CategoriasRepository } from '../categorias/repositories/categorias.repo
 import { UsuariosRepository } from '../usuarios/repositories/usuarios.repository';
 
 import { UpdateProdutoDto } from './dto/update-produto.dto';
+import { FindProdutosQueryDto } from './dto/find-produtos-query.dto';
 
 @Injectable()
 export class ProdutosService {
@@ -20,8 +22,18 @@ export class ProdutosService {
     private readonly usuariosRepository: UsuariosRepository,
   ) {}
 
-  async findAll() {
-    return this.produtosRepository.findAll();
+async findAll(filtros: FindProdutosQueryDto) {
+  if (
+    filtros.precoMin !== undefined &&
+    filtros.precoMax !== undefined &&
+    filtros.precoMin > filtros.precoMax
+  ) {
+    throw new BadRequestException(
+      'O preço mínimo não pode ser maior que o preço máximo.',
+    );
+  }
+
+  return this.produtosRepository.findAll(filtros);
   }
 
   async findById(id: string) {

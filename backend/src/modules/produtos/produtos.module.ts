@@ -10,7 +10,6 @@ import { AuthModule } from '../AuthModule/auth.module';
 import { ProdutosRepository } from './repositories/produtos.repository';
 import { ProdutosService } from './produtos.service';
 import { ProdutosController } from './produtos.controller';
-
 @Module({
   imports: [
     TypeOrmModule.forFeature([Produtos]),
